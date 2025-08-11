@@ -19,4 +19,6 @@ public class Loan {
     private String status;
     private int fineAmount;
     private LocalDateTime createdAt;
+
+
 }
