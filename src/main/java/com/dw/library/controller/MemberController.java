@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/members")
 public class MemberController {
@@ -20,13 +22,18 @@ public class MemberController {
 
     @GetMapping
 //  전체 회원 조회
-    public ResponseEntity<MemberDto> getAllMember(){
+    public ResponseEntity<List<MemberDto>> getAllMember(){
         return null;
     }
 
     @GetMapping("/members/{memberId}")
-//    회원 id로 조회
+//    회원 id로 회원 상세 조회
     public ResponseEntity<MemberDto> getMemberById(@PathVariable long id){
+        return null;
+    }
+
+    @PutMapping("/members/{memberId}")
+    public ResponseEntity<MemberDto> updateMember(@RequestBody MemberDto memberDto){
         return null;
     }
 
