@@ -25,6 +25,7 @@ public class Member {
         return new MemberDto(
                 this.id,
                 this.email,
+                null,
                 this.name,
                 this.phone,
                 this.address,

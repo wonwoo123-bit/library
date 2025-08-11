@@ -23,7 +23,10 @@ public class BookController {
 
     @GetMapping
 //    모든 책 조회
-    public ResponseEntity<List<BookDto>> getAllBooks (){
+    public ResponseEntity<List<BookDto>> getAllBooks (
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
         return null;
     }
 

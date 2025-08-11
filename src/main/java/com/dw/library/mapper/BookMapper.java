@@ -12,7 +12,8 @@ public interface BookMapper {
 
     void saveBook(@Param("BookDto")BookDto bookDto);
 
-    List<Book> getAllBooks ();
+    List<Book> getAllBooks (@Param("offset") int offset,
+                            @Param("limit") int limit);
 
     Book getBookById(@Param("id") long id);
 

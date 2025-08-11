@@ -18,4 +18,5 @@ public interface MemberMapper {
 
     Member updateMember(@Param("MemberDto")MemberDto memberDto);
 
+    Member getUserByEmail(@Param("email")String email);
 }

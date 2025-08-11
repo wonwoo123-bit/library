@@ -15,4 +15,9 @@
         <result property="location" column="location"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
+
+    <insert id="saveBook" useGeneratedKeys="true" keyProperty="book.bookId">
+        insert into book (isbn, title, )
+    </insert>
+
 </mapper>
