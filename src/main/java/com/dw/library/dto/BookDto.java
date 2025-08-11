@@ -37,9 +37,6 @@ public class BookDto {
     @PositiveOrZero(message = "총수량은 0 이상이어야 합니다")
     private int totalQuantity; // 총수량
     @NotBlank
-    @PositiveOrZero(message = "대출가능수량은 0 이상이어야 합니다")
-    private int availableQuantity; // 대출가능수량
-    @NotBlank
     @Length(min = 0, max = 255,
             message = "소장위치는 255자 이하로 입력해야 합니다.")
     private String location; // 소장위치

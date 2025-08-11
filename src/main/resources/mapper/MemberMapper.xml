@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dw.library_mybatis.mapper.MemberMapper">
+<mapper namespace="com.dw.library.mapper.MemberMapper">
 
     <resultMap id="MemberMap" type="Member">
         <id property="id" column="member_id"/>
@@ -15,12 +15,13 @@
         <result property="updatedAt" column="update_at"/>
     </resultMap>
     
-    <select id="getUserByEmail" resultMap="MemberMap">
-        select * from member
+    <select id="getMemberByEmail" resultMap="MemberMap">
+        select member_id, email, password, name, phone, address, member_type, created_at, update_at
+        from member
         where email = #{email}
     </select>
 
-    <insert id="registerMember" useGeneratedKeys="true" keyProperty="member_id">
+    <insert id="registerMember" useGeneratedKeys="true" keyProperty="id">
         insert into member (email, password, name, phone, address, member_type, created_at)
         values (
         #{memberDto.email},

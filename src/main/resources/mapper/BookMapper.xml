@@ -15,4 +15,20 @@
         <result property="location" column="location"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
+
+    <insert id="saveBook" useGeneratedKeys="true" keyProperty="BookId">
+        insert into book (isbn, title, author, publisher, publication_year,
+        category, total_quantity, location, created_at)
+        values(
+        #{BookDto.isbn},
+        #{BookDto.title},
+        #{BookDto.author},
+        #{BookDto.publisher},
+        #{BookDto.publicationYear},
+        #{BookDto.category},
+        #{BookDto.totalQuantity},
+        #{BookDto.location},
+        now()
+        )
+    </insert>
 </mapper>

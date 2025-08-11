@@ -29,8 +29,7 @@ public class Member {
                 this.name,
                 this.phone,
                 this.address,
-                this.memberType,
-                this.updatedAt
+                this.memberType
         );
     }
 

@@ -33,7 +33,6 @@ public class Book {
                 this.publicationYear,
                 this.category,
                 this.totalQuantity,
-                this.availableQuantity,
                 this.location
         );
     }

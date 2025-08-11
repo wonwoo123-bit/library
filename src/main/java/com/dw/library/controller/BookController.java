@@ -4,6 +4,8 @@ import com.dw.library.dto.BookDto;
 import com.dw.library.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +17,10 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-    @PostMapping
+    @PostMapping("/save")
 //    책 저장
     public ResponseEntity<BookDto> saveBook (@RequestBody BookDto bookDto){
-        return null;
+        return new ResponseEntity<>(bookService.saveBook(bookDto), HttpStatus.CREATED);
     }
 
     @GetMapping

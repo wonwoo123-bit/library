@@ -4,6 +4,7 @@ import com.dw.library.dto.MemberDto;
 import com.dw.library.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,10 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    @PostMapping
+    @PostMapping("/register")
 //    회원 추가(회원가입)
-    public ResponseEntity<MemberDto> registerMember(@RequestBody MemberDto memberDto){
-        return null;
+    public ResponseEntity<MemberDto> registerMember(@Valid @RequestBody MemberDto memberDto){
+        return new ResponseEntity<>(memberService.registerMember(memberDto), HttpStatus.CREATED);
     }
 
     @GetMapping

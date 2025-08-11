@@ -1,10 +1,7 @@
 package com.dw.library.dto;
 
 import com.dw.library.model.Member;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -16,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class MemberDto {
-    @NotBlank
+    @NotNull
     private long id;
     @NotBlank(message = "이메일은 필수 입력값입니다.")
     @Email(message = "이메일 형식이 올바르지 않습니다.")
@@ -39,6 +36,4 @@ public class MemberDto {
     @NotBlank
     // @ValidEnum(enumClass = Member.class)
     private String memberType; // (STUDENT/TEACHER/GENERAL) ???
-    @PastOrPresent(message = "수정일은 현재 날짜여야 합니다")
-    private LocalDateTime updatedAt; // 수정일시
 }
