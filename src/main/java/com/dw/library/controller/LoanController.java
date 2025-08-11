@@ -14,19 +14,26 @@ public class LoanController {
     LoanService loanService;
 
     @PostMapping
+//    도서대출
     public ResponseEntity<LoanDto> saveLoan(@RequestBody LoanDto loanDto){
         return null;
     }
 
     @GetMapping("/{memberId}")
+//    멤버id로 조회
     public ResponseEntity<LoanDto> getAllMembers(){
         return null;
     }
 
     @PutMapping("/loans/{loanId}/return")
+//    도서반납
     public ResponseEntity<LoanDto> returnLoan(){
         return null;
     }
 
     @GetMapping("/overdue")
+//    연체도서 조회
+    public ResponseEntity<LoanDto> overdue (){
+        return null;
+    }
 }

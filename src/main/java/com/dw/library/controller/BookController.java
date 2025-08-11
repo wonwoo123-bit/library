@@ -13,16 +13,19 @@ public class BookController {
     BookService bookService;
 
     @PostMapping
+//    책 저장
     public ResponseEntity<BookDto> saveBook (@RequestBody BookDto bookDto){
         return null;
     }
 
     @GetMapping
+//    모든 책 조회
     public ResponseEntity<BookDto> getAllBooks (){
         return null;
     }
 
     @GetMapping("/books/{bookId}")
+//    책 id로 조회
     public ResponseEntity<BookDto> getBookById (@PathVariable long id){
         return null;
     }

@@ -13,26 +13,22 @@ public class MemberController {
     MemberService memberService;
 
     @PostMapping
+//    회원 추가(회원가입)
     public ResponseEntity<MemberDto> registerMember(@RequestBody MemberDto memberDto){
         return null;
     }
 
     @GetMapping
-    public ResponseEntity<MemberDto> registerMember(){
+//  전체 회원 조회
+    public ResponseEntity<MemberDto> getAllMember(){
         return null;
     }
 
     @GetMapping("/members/{memberId}")
+//    회원 id로 조회
     public ResponseEntity<MemberDto> getMemberById(@PathVariable long id){
         return null;
     }
 
 }
 
-
-
-//post : registerMember
-//
-//get  c
-//get /{memberId} : getMemberById
-//get /statistics/member-loans/{memberId} : getMemberLoans
