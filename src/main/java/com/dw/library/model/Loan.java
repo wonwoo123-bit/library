@@ -1,5 +1,6 @@
 package com.dw.library.model;
 
+import com.dw.library.dto.LoanDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -10,15 +11,27 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class Loan {
-    private long loanId;
-    private Member memberId;
-    private Book bookId;
-    private LocalDateTime loanDate;
-    private LocalDateTime dueDate;
-    private LocalDateTime returnDate;
-    private String status;
-    private int fineAmount;
-    private LocalDateTime createdAt;
+    private long loanId; // 대출ID
+    private Member member; //회원ID
+    private Book book; // 도서ID
+    private LocalDateTime loanDate; // 대출일
+    private LocalDateTime dueDate; //반납예정일
+    private LocalDateTime returnDate; //실제반납일
+    private String status; // 상태(ACTIVE/RETURNED/OVERDUE)
+    private int fineAmount; // 연체료
+    private LocalDateTime createdAt; // 대출신청일시
 
-
+    public LoanDto toDto() {
+        return new LoanDto(
+                this.loanId,
+                this.member.toDto(),
+                this.book.toDto(),
+                this.loanDate,
+                this.dueDate,
+                this.returnDate,
+                this.status,
+                this.fineAmount,
+                this.createdAt
+        );
+    }
 }
