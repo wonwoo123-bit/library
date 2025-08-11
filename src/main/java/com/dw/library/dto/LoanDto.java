@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @ToString
 public class LoanDto {
     private long loanId;
-    private BookDto member;
-    private MemberDto book;
+    private MemberDto member;
+    private BookDto book;
     private LocalDateTime loanDate;
     private LocalDateTime dueDate;
     private LocalDateTime returnDate;
