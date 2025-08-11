@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dw.library_mybatis.mapper.PurchaseMapper">
+<mapper namespace="com.dw.library.mapper.BookMapper">
     <resultMap id="BookMap" type="book">
-        <id property="bookId" column="book_id"/>
+        <id column="book_id" property="bookId"/>
         <result property="isbn" column="isbn"/>
         <result property="title" column="title"/>
         <result property="author" column="author"/>
@@ -15,9 +15,4 @@
         <result property="location" column="location"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
-
-    <insert id="saveBook" useGeneratedKeys="true" keyProperty="book.bookId">
-        insert into book (isbn, title, )
-    </insert>
-
 </mapper>

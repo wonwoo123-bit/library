@@ -11,12 +11,12 @@ import java.util.List;
 public interface MemberMapper {
 
     void registerMember(@Param("MemberDto")MemberDto memberDto);
-
-    List<Member> getAllMember();
-
-    Member getMemberById(@Param("id")long id);
-
-    Member updateMember(@Param("MemberDto")MemberDto memberDto);
+//
+//    List<Member> getAllMember();
+//
+//    Member getMemberById(@Param("id")long id);
+//
+//    Member updateMember(@Param("MemberDto")MemberDto memberDto);
 
     Member getUserByEmail(@Param("email")String email);
 }
