@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dw.library_mybatis.mapper.PurchaseMapper">
+
+    <resultMap id="MemberMap" type="member">
+        <id property="id" column="member_id"/>
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="memberType" column="member_type"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="update_at"/>
+    </resultMap>
+
+
+
+</mapper>

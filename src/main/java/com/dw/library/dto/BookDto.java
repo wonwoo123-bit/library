@@ -1,5 +1,6 @@
 package com.dw.library.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDateTime;

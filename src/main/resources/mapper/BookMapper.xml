@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dw.library_mybatis.mapper.PurchaseMapper">
+    <resultMap id="BookMap" type="book">
+        <id property="bookId" column="book_id"/>
+        <result property="isbn" column="isbn"/>
+        <result property="title" column="title"/>
+        <result property="author" column="author"/>
+        <result property="publisher" column="publisher"/>
+        <result property="publicationYear" column="publication_year"/>
+        <result property="category" column="category"/>
+        <result property="totalQuantity" column="total_quantity"/>
+        <result property="availableQuantity" column="available_quantity"/>
+        <result property="location" column="location"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+</mapper>
