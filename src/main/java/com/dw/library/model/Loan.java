@@ -2,6 +2,8 @@ package com.dw.library.model;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -9,12 +11,12 @@ import lombok.*;
 @ToString
 public class Loan {
     private long loanId;
-    private memberId;
-    bookId;
-    loanDate;
-    dueDate;
-    returnDate;
-    status;
-    fineAmount;
-    createdAt;
+    private Member memberId;
+    private Book bookId;
+    private LocalDateTime loanDate;
+    private LocalDateTime dueDate;
+    private LocalDateTime returnDate;
+    private String status;
+    private int fineAmount;
+    private LocalDateTime createdAt;
 }

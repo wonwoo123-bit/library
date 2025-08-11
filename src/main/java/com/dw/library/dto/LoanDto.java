@@ -1,6 +1,10 @@
 package com.dw.library.dto;
 
+import com.dw.library.model.Book;
+import com.dw.library.model.Member;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -8,4 +12,13 @@ import lombok.*;
 @Getter
 @ToString
 public class LoanDto {
+    private long loanId;
+    private String memberId;
+    private String bookId;
+    private LocalDateTime loanDate;
+    private LocalDateTime dueDate;
+    private LocalDateTime returnDate;
+    private String status;
+    private int fineAmount;
+    private LocalDateTime createdAt;
 }
