@@ -39,6 +39,4 @@
         limit #{limit} offset #{offset}
     </select>
 
-
-
 </mapper>

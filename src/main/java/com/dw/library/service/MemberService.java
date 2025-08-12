@@ -2,6 +2,7 @@ package com.dw.library.service;
 
 import com.dw.gameshop_mybatis.exception.InvalidRequestException;
 import com.dw.library.dto.MemberAllDto;
+import com.dw.library.dto.MemberByEmailDto;
 import com.dw.library.dto.MemberDto;
 import com.dw.library.dto.MemberUpdateDto;
 import com.dw.library.mapper.MemberMapper;
@@ -22,6 +23,15 @@ public class MemberService {
     public List<MemberAllDto> getAllMember(int page, int size){
         int offset = page * size;
         return memberMapper.getAllMember(offset, size).stream().map(Member::memberAllDto).toList();
+    }
+
+    public MemberByEmailDto getMemberByEmail(String email) {
+        Member member = memberMapper.getMemberByEmail(email);
+        if (member != null) {
+            return null;
+        } else {
+            throw new com.dw.gameshop_mybatis.exception.ResourceNotFoundException("해당 Game이 없습니다. ID : " + email);
+        }
     }
 
     public List<MemberUpdateDto> updateMember(MemberUpdateDto memberUpdateDto){

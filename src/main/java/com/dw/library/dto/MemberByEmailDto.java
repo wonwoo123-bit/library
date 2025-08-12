@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 
-public class MemberByEmail {
+public class MemberByEmailDto {
     @NotNull
     private long id;
     @NotBlank(message = "이메일은 필수 입력값입니다.")

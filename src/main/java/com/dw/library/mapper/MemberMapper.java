@@ -16,7 +16,7 @@ public interface MemberMapper {
     List<Member> getAllMember(
             @Param("offset") int offset,
             @Param("limit") int limit);
-//
+
 //    Member getMemberById(@Param("id")long id);
 //
 //    Member updateMember(@Param("MemberDto")MemberDto memberDto);
