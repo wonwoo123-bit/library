@@ -32,4 +32,22 @@
         now()
         )
     </insert>
+
+    <update id="updateBook">
+        UPDATE book
+        SET
+        title = #{book.title},
+        author = #{book.author},
+        publisher = #{book.publisher},
+        publicationYear = #{book.publicationYear},
+        category = #{book.category},
+        totalQuantity = #{book.totalQuantity},
+        location = #{book.location}
+        WHERE bookId = #{book.bookId}
+    </update>
+
+    <delete id="deleteBook">
+        DELETE FROM book WHERE bookId = #{bookId}
+    </delete>
+
 </mapper>

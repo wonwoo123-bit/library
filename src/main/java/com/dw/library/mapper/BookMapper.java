@@ -17,5 +17,11 @@ public interface BookMapper {
 
     Book getBookById(@Param("id") long id);
 
+    int updateBook(@Param("book")Book book);
+
+
+    Book findByBookId(@Param("bookId") Long bookId);
+    int deleteBook(@Param("bookId") Long bookId);
+
 
 }

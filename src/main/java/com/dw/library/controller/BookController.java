@@ -38,4 +38,19 @@ public class BookController {
         return null;
     }
 
+    // 도서 정보 수정
+    @PutMapping("/{bookId}")
+    public ResponseEntity<String> updateBook(
+            @PathVariable Long bookId,
+            @RequestBody BookDto bookDto) {
+        return new ResponseEntity<>(bookService.updateBook(bookId, bookDto), HttpStatus.OK);
+    }
+
+    // 도서 삭제
+    @DeleteMapping("/{bookId}")
+    public ResponseEntity<String> deleteBook (@PathVariable Long bookId){
+        return new ResponseEntity<>(bookService.deleteBook(bookId), HttpStatus.OK);
+
+    }
+
 }
