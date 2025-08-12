@@ -1,6 +1,7 @@
 package com.dw.library.model;
 
 import com.dw.library.dto.LoanDto;
+import com.dw.library.dto.LoanGetDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -24,11 +25,20 @@ public class Loan {
 
     public LoanDto toDto() {
         return new LoanDto(
-                this.loanId,
                 this.member.getEmail(),
                 this.book.getBookId(),
                 this.loanDate,
                 this.dueDate,
+                this.status
+        );
+    }
+    public LoanGetDto loanGetDto(){
+        return new LoanGetDto(
+                this.loanId,
+                this.member.getName(),
+                this.book.getTitle(),
+                this.getLoanDate(),
+                this.getDueDate(),
                 this.status
         );
     }

@@ -1,12 +1,15 @@
 package com.dw.library.controller;
 
 import com.dw.library.dto.LoanDto;
+import com.dw.library.dto.LoanGetDto;
 import com.dw.library.service.LoanService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/loans")
@@ -20,10 +23,12 @@ public class LoanController {
         return new ResponseEntity<>(loanService.saveLoan(loanDto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{memberId}")
+    @GetMapping("/search")
 //    멤버id로 조회
-    public ResponseEntity<LoanDto> getAllMembers(){
-        return null;
+    public ResponseEntity<List<LoanGetDto>> getByOthers(
+            @RequestParam(required = false) String memberEmail,
+            @RequestParam(required = false) String status){
+        return new ResponseEntity<>(loanService.getByOthers(memberEmail,status), HttpStatus.OK);
     }
 
     @PutMapping("/loans/{loanId}/return")

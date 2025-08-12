@@ -17,8 +17,6 @@ import java.time.LocalDateTime;
 @ToString
 public class LoanDto {
     @NotBlank
-    private long loanId;
-    @NotBlank
     private String member;
     @NotBlank
     private long book;

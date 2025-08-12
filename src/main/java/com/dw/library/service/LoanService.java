@@ -1,6 +1,7 @@
 package com.dw.library.service;
 
 import com.dw.library.dto.LoanDto;
+import com.dw.library.dto.LoanGetDto;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.mapper.LoanMapper;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class LoanService {
@@ -41,5 +43,9 @@ public class LoanService {
         book.setAvailableQuantity(book.getAvailableQuantity()-1);
 
         return loanMapper.saveLoan(loan);
+    }
+
+    public List<LoanGetDto> getByOthers (String memberEmail, String status){
+        return loanMapper.getByOthers(memberEmail, status).stream().map(Loan::loanGetDto).toList();
     }
 }

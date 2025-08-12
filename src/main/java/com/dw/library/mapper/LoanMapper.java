@@ -4,8 +4,12 @@ import com.dw.library.model.Loan;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface LoanMapper {
-    long saveLoan(@Param("Loan")Loan loan);
+    long saveLoan(@Param("loan")Loan loan);
 
+    List<Loan> getByOthers(@Param("memberEmail") String memberEmail,
+                           @Param("status") String status);
 }

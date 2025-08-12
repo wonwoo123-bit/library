@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dw.library_mybatis.mapper.LoanMapper">
+<mapper namespace="com.dw.library.mapper.LoanMapper">
     <resultMap id="LoanDetailMap" type="Loan">
         <id property="loanId" column="loan_id"/>
         <result property="loanDate" column="loan_date"/>
@@ -39,7 +39,57 @@
     </resultMap>
 
     <insert id="saveLoan" useGeneratedKeys="true" keyProperty="loanId">
-        insert into loan ()
+        insert into loan (member_id, book_id, loan_date, due_date, return_date, status, fine_amount, created_at)
+        values(
+        #{Loan.member.email},
+        #{Loan.book.bookId},
+        now(),
+        DATE_ADD(CURDATE(), INTERVAL 14 DAY),
+        #{Loan.loan_date},
+        #{Loan.status},
+        #{Loan.fine_amount},
+        now()
+        )
     </insert>
+
+    <select id="getByOthers" resultMap="LoanDetailMap">
+        select l.loan_id,
+        l.loan_date,
+        l.due_date,
+        l.return_date,
+        l.status,
+        l.fine_amount,
+        l.created_at,
+        m.member_id,
+        m.name,
+        m.email,
+        m.password,
+        m.phone,
+        m.address,
+        m.member_type,
+        m.created_at AS member_created_at,
+        m.update_at,
+        b.book_id,
+        b.isbn,
+        b.title,
+        b.author,
+        b.publisher,
+        b.publication_year,
+        b.category,
+        b.total_quantity,
+        b.available_quantity,
+        b.location,
+        b.created_at AS book_created_at
+        from loan l inner join member m on l.member_id = m.member_id
+        inner join book b on l.book_id = b.book_id
+        <where>
+            <if test="memberEmail != null and memberEmail != ''">
+                AND m.email like concat('%', #{memberEmail}, '%')
+            </if>
+            <if test="status != null and status != ''" >
+                AND l.status = #{status}
+            </if>
+        </where>
+    </select>
 
 </mapper>
