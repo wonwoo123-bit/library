@@ -31,8 +31,6 @@ public class MemberDto {
     @Length(min = 0, max = 255,
             message = "주소는 255자 이하로 입력해야 합니다.")
     private String address;
-
-
     @NotBlank
     // @ValidEnum(enumClass = Member.class)
     private String memberType; // (STUDENT/TEACHER/GENERAL) ???

@@ -1,6 +1,7 @@
 package com.dw.library.service;
 
 import com.dw.gameshop_mybatis.exception.InvalidRequestException;
+import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberDto;
 import com.dw.library.mapper.MemberMapper;
 import com.dw.library.model.Member;
@@ -8,12 +9,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
     @Autowired
     MemberMapper memberMapper;
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
+
+    public List<MemberAllDto> getAllMember(int page, int size){
+        int offset = page * size;
+        return memberMapper.getAllMember(offset, size).stream().map(Member::memberAllDto).toList();
+    }
+
+
+
+
+
+
+
+
+
+
+
+//    로그인 + 회원가입로직
 
     public boolean validateUser(String email,
                                 String password){

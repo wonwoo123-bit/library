@@ -1,5 +1,6 @@
 package com.dw.library.model;
 
+import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberDto;
 import lombok.*;
 
@@ -29,6 +30,15 @@ public class Member {
                 this.name,
                 this.phone,
                 this.address,
+                this.memberType
+        );
+    }
+
+    public MemberAllDto memberAllDto(){
+        return new MemberAllDto(
+                this.id,
+                this.email,
+                this.name,
                 this.memberType
         );
     }

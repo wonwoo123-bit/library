@@ -12,8 +12,10 @@ public interface MemberMapper {
     Member getMemberByEmail(@Param("email")String email);
 
     void registerMember(@Param("memberDto")MemberDto memberDto);
-//
-//    List<Member> getAllMember();
+
+    List<Member> getAllMember(
+            @Param("offset") int offset,
+            @Param("limit") int limit);
 //
 //    Member getMemberById(@Param("id")long id);
 //

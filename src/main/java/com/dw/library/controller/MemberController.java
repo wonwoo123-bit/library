@@ -1,5 +1,6 @@
 package com.dw.library.controller;
 
+import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberDto;
 import com.dw.library.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,13 +25,13 @@ public class MemberController {
         return new ResponseEntity<>(memberService.registerMember(memberDto), HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/all")
 //  전체 회원 조회
-    public ResponseEntity<List<MemberDto>> getAllMember(
+    public ResponseEntity<List<MemberAllDto>> getAllMember(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
-        return null;
+        return new ResponseEntity<>(memberService.getAllMember(page, size), HttpStatus.OK);
     }
 
     @GetMapping("/members/{memberId}")
@@ -40,6 +41,7 @@ public class MemberController {
     }
 
     @PutMapping("/members/{memberId}")
+//    회원 수정
     public ResponseEntity<MemberDto> updateMember(@RequestBody MemberDto memberDto){
         return null;
     }
