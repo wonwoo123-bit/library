@@ -28,7 +28,7 @@ public class MemberService {
     public MemberByEmailDto getMemberByEmail(String email) {
         Member member = memberMapper.getMemberByEmail(email);
         if (member != null) {
-            return null;
+            return member.memberByEmailDto();
         } else {
             throw new RuntimeException("해당 Game이 없습니다. ID : " + email);
         }

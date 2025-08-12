@@ -1,6 +1,7 @@
 package com.dw.library.controller;
 
 import com.dw.library.dto.MemberAllDto;
+import com.dw.library.dto.MemberByEmailDto;
 import com.dw.library.dto.MemberDto;
 import com.dw.library.dto.MemberUpdateDto;
 import com.dw.library.service.MemberService;
@@ -35,10 +36,12 @@ public class MemberController {
         return new ResponseEntity<>(memberService.getAllMember(page, size), HttpStatus.OK);
     }
 
-    @GetMapping("/members/{memberId}")
-//    회원 id로 회원 상세 조회
-    public ResponseEntity<MemberDto> getMemberById(@PathVariable long id){
-        return null;
+    @GetMapping("/members/{email}")
+//    회원 email로 회원 상세 조회
+    public ResponseEntity<MemberByEmailDto> getMemberById(@PathVariable String email){
+        return new ResponseEntity<>(
+                memberService.getMemberByEmail(email),
+                HttpStatus.OK);
     }
 
     @PutMapping("/members/{email}")
