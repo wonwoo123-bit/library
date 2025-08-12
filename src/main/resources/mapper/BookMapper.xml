@@ -16,6 +16,8 @@
         <result property="createdAt" column="created_at"/>
     </resultMap>
 
+
+
     <insert id="saveBook" useGeneratedKeys="true" keyProperty="bookId">
         insert into book (isbn, title, author, publisher, publication_year,
         category, total_quantity, available_quantity, location, created_at)
@@ -33,6 +35,8 @@
         )
     </insert>
 
+
+
     <update id="updateBook">
         UPDATE book
         SET
@@ -49,5 +53,12 @@
     <delete id="deleteBook">
         DELETE FROM book WHERE bookId = #{bookId}
     </delete>
+
+
+    <select id="findByBookId" parameterType="long" resultMap="BookMap">
+        SELECT * from book where bookId = #{bookId}
+    </select>
+
+
 
 </mapper>

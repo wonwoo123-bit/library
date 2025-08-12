@@ -39,7 +39,7 @@ public class BookController {
     }
 
     // 도서 정보 수정
-    @PutMapping("/update")
+    @PutMapping("/update/{bookId}")
     public ResponseEntity<String> updateBook(
             @PathVariable Long bookId,
             @RequestBody BookDto bookDto) {
@@ -47,7 +47,7 @@ public class BookController {
     }
 
     // 도서 삭제
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{bookId}")
     public ResponseEntity<String> deleteBook (@PathVariable Long bookId){
         return new ResponseEntity<>(bookService.deleteBook(bookId), HttpStatus.OK);
 
