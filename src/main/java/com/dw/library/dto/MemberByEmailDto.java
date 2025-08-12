@@ -4,10 +4,16 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class MemberByEmailDto {
     @NotNull
     private long id;
@@ -29,6 +35,6 @@ public class MemberByEmailDto {
     @NotBlank
     // @ValidEnum(enumClass = Member.class)
     private String memberType; // (STUDENT/TEACHER/GENERAL)
-    @NotBlank(message = "생성시간은 필수 입력값입니다")
+    @NotNull(message = "생성시간은 필수 입력값입니다")
     private LocalDateTime createdAt;
 }

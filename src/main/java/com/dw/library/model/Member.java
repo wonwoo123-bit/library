@@ -36,6 +36,18 @@ public class Member {
         );
     }
 
+    public MemberByEmailDto memberByEmailDto() {
+        return new MemberByEmailDto(
+                this.id,
+                this.email,
+                this.name,
+                this.phone,
+                this.address,
+                this.memberType,
+                this.createdAt
+        );
+    }
+
     public MemberAllDto memberAllDto(){
         return new MemberAllDto(
                 this.id,
