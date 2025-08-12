@@ -2,6 +2,7 @@ package com.dw.library.model;
 
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
+import com.dw.library.dto.LoanReturnDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -20,7 +21,7 @@ public class Loan {
     private LocalDateTime returnDate; //실제반납일
     private String status; // 상태(ACTIVE/RETURNED/OVERDUE)
     private int fineAmount; // 연체료
-    private LocalDateTime createdAt; // 대출신청일시
+    private LocalDateTime createdAt; // 수정일시
 
 
     public LoanDto toDto() {
@@ -40,6 +41,16 @@ public class Loan {
                 this.getLoanDate(),
                 this.getDueDate(),
                 this.status
+        );
+    }
+
+    public LoanReturnDto loanReturnDto(){
+        return new LoanReturnDto(
+                this.member.getEmail(),
+                this.book.getBookId(),
+                LocalDateTime.now(),
+                this.status,
+                LocalDateTime.now()
         );
     }
 

@@ -2,6 +2,7 @@ package com.dw.library.service;
 
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
+import com.dw.library.dto.LoanReturnDto;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.mapper.LoanMapper;
@@ -47,5 +48,23 @@ public class LoanService {
 
     public List<LoanGetDto> getByOthers (String memberEmail, String status){
         return loanMapper.getByOthers(memberEmail, status).stream().map(Loan::loanGetDto).toList();
+    }
+
+    public int returnLoan(LoanReturnDto loanReturnDto){
+        Member member = memberMapper.getMemberByEmail(loanReturnDto.getMemberEmail());
+        if (member == null){
+            throw new ResourceNotFoundException("해당 member 찾을 수 없음");
+        }
+        Book book = bookMapper.getBookById(loanReturnDto.getBookId());
+        if (book == null){
+            throw new ResourceNotFoundException("해당 책 찾을 수 없음");
+        }
+        Loan loan = loanMapper.getLoanById(loanReturnDto.getBookId());
+        if (loan == null){
+            throw new  ResourceNotFoundException(" 해당 대출 조회 불가능");
+        }
+        loan.setStatus(loanReturnDto.getStatus());
+        loan.setCreatedAt(LocalDateTime.now());
+        return loanMapper.returnLoan(loan);
     }
 }

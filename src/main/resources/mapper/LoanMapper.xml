@@ -14,29 +14,36 @@
         <association property="member" javaType="Member">
             <id property="id" column="member_id"/>
             <result property="email" column="email"/>
-            <result property="password" column="password"/>
             <result property="name" column="name"/>
-            <result property="phone" column="phone"/>
-            <result property="address" column="address"/>
-            <result property="memberType" column="member_type"/>
-            <result property="createdAt" column="created_at"/>
-            <result property="updatedAt" column="update_at"/>
         </association>
 
         <association property="book" javaType="Book">
             <id property="bookId" column="book_id"/>
-            <result property="isbn" column="isbn"/>
             <result property="title" column="title"/>
-            <result property="author" column="author"/>
-            <result property="publisher" column="publisher"/>
-            <result property="publicationYear" column="publication_year"/>
-            <result property="category" column="category"/>
             <result property="totalQuantity" column="total_quantity"/>
             <result property="availableQuantity" column="available_quantity"/>
-            <result property="location" column="location"/>
-            <result property="createdAt" column="created_at"/>
         </association>
     </resultMap>
+
+    <select id="getLoanById" resultMap="LoanDetailMap">
+        select l.loan_id,
+        l.loan_date,
+        l.due_date,
+        l.return_date,
+        l.status,
+        l.fine_amount,
+        l.created_at,
+        m.member_id,
+        m.name,
+        m.email,
+        b.book_id,
+        b.title,
+        b.total_quantity,
+        b.available_quantity,
+        from loan l inner join member m on l.member_id = m.member_id
+        inner join book b on l.book_id = b.book_id
+        where l.loan_id = #{id}
+    </select>
 
     <insert id="saveLoan" useGeneratedKeys="true" keyProperty="loanId">
         insert into loan (member_id, book_id, loan_date, due_date, return_date, status, fine_amount, created_at)
@@ -63,23 +70,10 @@
         m.member_id,
         m.name,
         m.email,
-        m.password,
-        m.phone,
-        m.address,
-        m.member_type,
-        m.created_at AS member_created_at,
-        m.update_at,
         b.book_id,
-        b.isbn,
         b.title,
-        b.author,
-        b.publisher,
-        b.publication_year,
-        b.category,
         b.total_quantity,
         b.available_quantity,
-        b.location,
-        b.created_at AS book_created_at
         from loan l inner join member m on l.member_id = m.member_id
         inner join book b on l.book_id = b.book_id
         <where>
@@ -91,5 +85,14 @@
             </if>
         </where>
     </select>
+
+
+    <update id="returnLoan">
+        update loan
+        set status = #{loan.status},
+        created_at = now()
+        where loan_id = #{id}
+
+    </update>
 
 </mapper>

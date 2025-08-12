@@ -13,5 +13,7 @@ public interface LoanMapper {
     List<Loan> getByOthers(@Param("memberEmail") String memberEmail,
                            @Param("status") String status);
 
+    Loan getLoanById(@Param("id") long id);
 
+    int returnLoan(@Param("loan") Loan loan);
 }

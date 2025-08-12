@@ -2,6 +2,7 @@ package com.dw.library.controller;
 
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
+import com.dw.library.dto.LoanReturnDto;
 import com.dw.library.service.LoanService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class LoanController {
 
     @PutMapping("/return")
 //    도서반납
-    public ResponseEntity<LoanDto> returnLoan(){
-        return null;
+    public ResponseEntity<Integer> returnLoan(@RequestBody LoanReturnDto loanReturnDto){
+        return new ResponseEntity<>(loanService.returnLoan(loanReturnDto), HttpStatus.OK);
     }
 
     @GetMapping("/overdue")
