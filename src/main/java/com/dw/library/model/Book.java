@@ -19,9 +19,24 @@ public class Book {
     private int publicationYear;
     private String category;
     private int totalQuantity;
-    private int availableQuantity;
+    private int availableQuantity = totalQuantity;
     private String location;
     private LocalDateTime createdAt;
+
+    public Book(String isbn, String title, String author, String publisher,
+                int publicationYear, String category, int totalQuantity, String location) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.publicationYear = publicationYear;
+        this.category = category;
+        this.totalQuantity = totalQuantity;
+        this.availableQuantity = totalQuantity; // 자동 설정
+        this.location = location;
+        this.createdAt = LocalDateTime.now(); // 자동 설정
+    }
+
 
     public BookDto toDto(){
         return new BookDto(

@@ -1,4 +1,4 @@
-package com.dw.gameshop_mybatis.exception;
+package com.dw.library.exception;
 
 //import jakarta.validation.ConstraintViolationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;

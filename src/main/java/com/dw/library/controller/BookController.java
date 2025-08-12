@@ -19,7 +19,7 @@ public class BookController {
 
     @PostMapping("/save")
 //    책 저장
-    public ResponseEntity<BookDto> saveBook (@RequestBody BookDto bookDto){
+    public ResponseEntity<Long> saveBook (@RequestBody BookDto bookDto){
         return new ResponseEntity<>(bookService.saveBook(bookDto), HttpStatus.CREATED);
     }
 

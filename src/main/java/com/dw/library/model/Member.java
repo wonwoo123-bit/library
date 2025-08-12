@@ -1,6 +1,7 @@
 package com.dw.library.model;
 
 import com.dw.library.dto.MemberAllDto;
+import com.dw.library.dto.MemberByEmail;
 import com.dw.library.dto.MemberDto;
 import com.dw.library.dto.MemberUpdateDto;
 import lombok.*;

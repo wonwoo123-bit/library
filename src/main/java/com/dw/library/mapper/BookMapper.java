@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
 
-    void saveBook(@Param("BookDto")BookDto bookDto);
+    int saveBook(@Param("Book")Book book);
 
     List<Book> getAllBooks (@Param("offset") int offset,
                             @Param("limit") int limit);

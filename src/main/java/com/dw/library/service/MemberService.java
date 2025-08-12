@@ -1,6 +1,6 @@
 package com.dw.library.service;
 
-import com.dw.gameshop_mybatis.exception.InvalidRequestException;
+import com.dw.library.exception.InvalidRequestException;
 import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberByEmailDto;
 import com.dw.library.dto.MemberDto;
