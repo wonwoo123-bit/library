@@ -44,13 +44,11 @@ public class MemberController {
                 HttpStatus.OK);
     }
 
-    @PutMapping("/members/{email}")
+    @PutMapping("/update/{email}")
 //    회원 수정
-    public ResponseEntity<String> updateMember(
-            @PathVariable String email,
+    public ResponseEntity<Integer> updateMember(
             @RequestBody MemberUpdateDto memberUpdateDto) {
-        memberService.updateMember(email, memberUpdateDto);
-        return new ResponseEntity<>("회원 정보가 수정되었습니다.", HttpStatus.OK);
+        return new ResponseEntity<>(memberService.updateMember(memberUpdateDto), HttpStatus.OK);
     }
 
 

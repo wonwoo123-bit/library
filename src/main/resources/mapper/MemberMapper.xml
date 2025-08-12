@@ -34,13 +34,13 @@
         )
     </insert>
 
-    <update id="updateMember" parameterType="com.dw.library.entity.Member">
-        UPDATE members
+    <update id="updateMember">
+        UPDATE member
         SET
-        name = #{name},
-        phone = #{phone},
-        address = #{address}
-        WHERE email = #{email}
+        name = #{member.name},
+        phone = #{member.phone},
+        address = #{member.address}
+        WHERE email = #{member.email}
     </update>
 
     <select id="getAllMember" resultMap="MemberMap">

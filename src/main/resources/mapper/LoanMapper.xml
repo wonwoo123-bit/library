@@ -38,4 +38,8 @@
         </association>
     </resultMap>
 
+    <insert id="saveLoan" useGeneratedKeys="true" keyProperty="loanId">
+        insert into loan ()
+    </insert>
+
 </mapper>

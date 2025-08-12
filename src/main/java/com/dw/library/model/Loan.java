@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class Loan {
-    private long loanId; // 대출ID
+    private Long loanId; // 대출ID
     private Member member; //회원ID
     private Book book; // 도서ID
     private LocalDateTime loanDate; // 대출일
@@ -21,17 +21,16 @@ public class Loan {
     private int fineAmount; // 연체료
     private LocalDateTime createdAt; // 대출신청일시
 
+
     public LoanDto toDto() {
         return new LoanDto(
                 this.loanId,
-                this.member.toDto(),
-                this.book.toDto(),
+                this.member.getEmail(),
+                this.book.getBookId(),
                 this.loanDate,
                 this.dueDate,
-                this.returnDate,
-                this.status,
-                this.fineAmount,
-                this.createdAt //123123
+                this.status
         );
     }
+
 }

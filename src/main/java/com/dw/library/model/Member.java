@@ -59,6 +59,7 @@ public class Member {
 
     public MemberUpdateDto memberUpdateDto(){
         return new MemberUpdateDto(
+                this.email,
                 this.name,
                 this.phone,
                 this.address

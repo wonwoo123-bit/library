@@ -19,25 +19,12 @@ public class LoanDto {
     @NotBlank
     private long loanId;
     @NotBlank
-    private MemberDto member;
+    private String member;
     @NotBlank
-    private BookDto book;
-    @NotBlank
+    private long book;
     @PastOrPresent(message = "반납일은 현재 또는 과거 날짜여야 합니다")
     private LocalDateTime loanDate;
-    @NotBlank
     @Future(message = "반납예정일은 미래 날짜여야 합니다")
     private LocalDateTime dueDate;
-    @NotBlank
-    @PastOrPresent(message = "실제반납일은 현재 또는 과거 날짜여야 합니다")
-    private LocalDateTime returnDate;
-
-
     private String status; // (ACTIVE/RETURNED/OVERDUE)
-    @NotBlank
-    @Min(value = 0, message = "연체료 0 이상이어야 합니다")
-    private int fineAmount;
-    @NotBlank
-    @PastOrPresent(message = "생성일은 현재 또는 과거 날짜여야 합니다")
-    private LocalDateTime createdAt;
 }

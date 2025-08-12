@@ -5,6 +5,7 @@ import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberByEmailDto;
 import com.dw.library.dto.MemberDto;
 import com.dw.library.dto.MemberUpdateDto;
+import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.MemberMapper;
 import com.dw.library.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +35,16 @@ public class MemberService {
         }
     }
 
-    public MemberUpdateDto updateMember(String email, MemberUpdateDto memberUpdateDto){
-        Member member = memberMapper.getMemberByEmail(email);
+    public int updateMember(MemberUpdateDto memberUpdateDto){
+        Member member = memberMapper.getMemberByEmail(memberUpdateDto.getEmail());
         if (member == null) {
             throw new ResourceNotFoundException("해당 회원이 존재하지 않습니다.");
         }
         member.setName(memberUpdateDto.getName());
-        member.setPhone(member.getPhone());
-        member.setAddress(member.getAddress());
+        member.setPhone(memberUpdateDto.getPhone());
+        member.setAddress(memberUpdateDto.getAddress());
 
-        memberMapper.updateMember(member);
-
-        MemberUpdateDto updateDto = new MemberUpdateDto();
-        updateDto.setName(member.getName());
-        updateDto.setPhone(member.getPhone());
-        updateDto.setAddress(member.getAddress());
-
-        return updateDto;
+        return memberMapper.updateMember(member);
     }
 
 
