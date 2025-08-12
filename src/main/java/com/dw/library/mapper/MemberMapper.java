@@ -19,5 +19,5 @@ public interface MemberMapper {
 
 //    Member getMemberById(@Param("id")long id);
 //
-//    Member updateMember(@Param("MemberDto")MemberDto memberDto);
+    int updateMember(@Param("member")Member member);
 }
