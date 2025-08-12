@@ -46,10 +46,12 @@ public class MemberController {
 
     @PutMapping("/members/{email}")
 //    회원 수정
-    public ResponseEntity<MemberUpdateDto> updateMember(@RequestBody MemberUpdateDto memberUpdateDto){
-        return null;
+    public ResponseEntity<String> updateMember(
+            @PathVariable String email,
+            @RequestBody MemberUpdateDto memberUpdateDto) {
+        memberService.updateMember(email, memberUpdateDto);
+        return new ResponseEntity<>("회원 정보가 수정되었습니다.", HttpStatus.OK);
     }
-
 
 
     @PostMapping("/login")
