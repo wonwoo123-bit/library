@@ -41,13 +41,13 @@
     <insert id="saveLoan" useGeneratedKeys="true" keyProperty="loanId">
         insert into loan (member_id, book_id, loan_date, due_date, return_date, status, fine_amount, created_at)
         values(
-        #{Loan.member.email},
-        #{Loan.book.bookId},
+        #{member.id},
+        #{book.bookId},
         now(),
         DATE_ADD(CURDATE(), INTERVAL 14 DAY),
-        #{Loan.loan_date},
-        #{Loan.status},
-        #{Loan.fine_amount},
+        #{returnDate},
+        #{status},
+        #{fineAmount},
         now()
         )
     </insert>
