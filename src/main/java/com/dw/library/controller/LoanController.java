@@ -31,7 +31,7 @@ public class LoanController {
         return new ResponseEntity<>(loanService.getByOthers(memberEmail,status), HttpStatus.OK);
     }
 
-    @PutMapping("/loans/{loanId}/return")
+    @PutMapping("/return")
 //    도서반납
     public ResponseEntity<LoanDto> returnLoan(){
         return null;
