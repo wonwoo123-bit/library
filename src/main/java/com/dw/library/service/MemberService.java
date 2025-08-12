@@ -30,7 +30,7 @@ public class MemberService {
         if (member != null) {
             return null;
         } else {
-            throw new com.dw.gameshop_mybatis.exception.ResourceNotFoundException("해당 Game이 없습니다. ID : " + email);
+            throw new RuntimeException("해당 Game이 없습니다. ID : " + email);
         }
     }
 
