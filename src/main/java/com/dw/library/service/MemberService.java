@@ -3,6 +3,7 @@ package com.dw.library.service;
 import com.dw.gameshop_mybatis.exception.InvalidRequestException;
 import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberDto;
+import com.dw.library.dto.MemberUpdateDto;
 import com.dw.library.mapper.MemberMapper;
 import com.dw.library.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class MemberService {
     public List<MemberAllDto> getAllMember(int page, int size){
         int offset = page * size;
         return memberMapper.getAllMember(offset, size).stream().map(Member::memberAllDto).toList();
+    }
+
+    public List<MemberUpdateDto> updateMember(MemberUpdateDto memberUpdateDto){
+        return null;
     }
 
 

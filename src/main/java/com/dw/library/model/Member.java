@@ -2,6 +2,7 @@ package com.dw.library.model;
 
 import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberDto;
+import com.dw.library.dto.MemberUpdateDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -40,6 +41,14 @@ public class Member {
                 this.email,
                 this.name,
                 this.memberType
+        );
+    }
+
+    public MemberUpdateDto memberUpdateDto(){
+        return new MemberUpdateDto(
+                this.name,
+                this.phone,
+                this.address
         );
     }
 

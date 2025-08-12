@@ -2,6 +2,7 @@ package com.dw.library.controller;
 
 import com.dw.library.dto.MemberAllDto;
 import com.dw.library.dto.MemberDto;
+import com.dw.library.dto.MemberUpdateDto;
 import com.dw.library.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -40,9 +41,9 @@ public class MemberController {
         return null;
     }
 
-    @PutMapping("/members/{memberId}")
+    @PutMapping("/members/{email}")
 //    회원 수정
-    public ResponseEntity<MemberDto> updateMember(@RequestBody MemberDto memberDto){
+    public ResponseEntity<MemberUpdateDto> updateMember(@RequestBody MemberUpdateDto memberUpdateDto){
         return null;
     }
 
