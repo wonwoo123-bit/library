@@ -34,10 +34,24 @@ public class MemberService {
         }
     }
 
-    public List<MemberUpdateDto> updateMember(MemberUpdateDto memberUpdateDto){
-        return null;
-    }
+    public MemberUpdateDto updateMember(String email, MemberUpdateDto memberUpdateDto){
+        Member member = memberMapper.getMemberByEmail(email);
+        if (member == null) {
+            throw new ResourceNotFoundException("해당 회원이 존재하지 않습니다.");
+        }
+        member.setName(memberUpdateDto.getName());
+        member.setPhone(member.getPhone());
+        member.setAddress(member.getAddress());
 
+        memberMapper.updateMember(member);
+
+        MemberUpdateDto updateDto = new MemberUpdateDto();
+        updateDto.setName(member.getName());
+        updateDto.setPhone(member.getPhone());
+        updateDto.setAddress(member.getAddress());
+
+        return updateDto;
+    }
 
 
 
