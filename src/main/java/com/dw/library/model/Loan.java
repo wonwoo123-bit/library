@@ -4,6 +4,7 @@ import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
 import com.dw.library.dto.LoanOverdueDto;
 import com.dw.library.dto.LoanReturnDto;
+import com.dw.library.enums.LoanStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -20,7 +21,7 @@ public class Loan {
     private LocalDateTime loanDate; // 대출일
     private LocalDateTime dueDate; //반납예정일
     private LocalDateTime returnDate; //실제반납일
-    private String status; // 상태(ACTIVE/RETURNED/OVERDUE)
+    private LoanStatus status; // 상태(ACTIVE/RETURNED/OVERDUE)
     private Integer fineAmount; // 연체료
     private LocalDateTime createdAt; // 수정일시
 

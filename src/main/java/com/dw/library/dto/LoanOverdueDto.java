@@ -1,5 +1,6 @@
 package com.dw.library.dto;
 
+import com.dw.library.enums.LoanStatus;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -16,5 +17,5 @@ public class LoanOverdueDto {
     private String bookTitle; // 도서명
     private LocalDateTime loanDate; // 대출일
     private LocalDateTime dueDate; //반납예정일
-    private String status; // 상태(ACTIVE/RETURNED/OVERDUE)
+    private LoanStatus status; // 상태(ACTIVE/RETURNED/OVERDUE)
 }

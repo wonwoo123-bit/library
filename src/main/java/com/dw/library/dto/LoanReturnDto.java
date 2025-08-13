@@ -1,5 +1,7 @@
 package com.dw.library.dto;
 
+import com.dw.library.enums.LoanStatus;
+import com.dw.library.model.Loan;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -17,6 +19,6 @@ public class LoanReturnDto {
     @NotBlank
     private long bookId;
     private LocalDateTime returnDate; //실제반납일
-    private String status; // (ACTIVE/RETURNED/OVERDUE)
+    private LoanStatus status; // (ACTIVE/RETURNED/OVERDUE)
     private LocalDateTime createdAt;
 }
