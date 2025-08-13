@@ -25,13 +25,13 @@ public class BookController {
         return new ResponseEntity<>(bookService.saveBook(bookDto), HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/all")
 //    모든 책 조회
     public ResponseEntity<List<BooksAllDto>> getAllBooks (
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(required = false) String keyword,
-            @RequestParam(required = false) String category) {
+            @Valid @RequestParam(required = false) String category) {
         return new ResponseEntity<>(bookService.getAllBooks(
                 page,size,keyword,category), HttpStatus.OK);
     }
@@ -59,5 +59,6 @@ public class BookController {
         return new ResponseEntity<>(bookService.deleteBook(bookId), HttpStatus.OK);
 
     }
+
 
 }

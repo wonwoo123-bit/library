@@ -1,9 +1,6 @@
 package com.dw.library.service;
 
-import com.dw.library.dto.LoanDto;
-import com.dw.library.dto.LoanGetDto;
-import com.dw.library.dto.LoanOverdueDto;
-import com.dw.library.dto.LoanReturnDto;
+import com.dw.library.dto.*;
 import com.dw.library.enums.LoanStatus;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
@@ -102,7 +99,6 @@ public class LoanService {
             loan.setReturnDate(now);
             loan.setStatus(LoanStatus.returned);
             loan.setCreatedAt(now);
-
             return "도서가 반납되었습니다.";
         }else {
             return "존재하지 않는 대출건 입니다.";
@@ -112,5 +108,9 @@ public class LoanService {
 
     public List<LoanOverdueDto> getOverdueLoans() {
         return loanMapper.getOverdueLoans();
+    }
+
+    public List<LoanPopDto> getPopularBook(){
+        return loanMapper.getPopularBook().stream().map(Loan::loanPopDto).toList();
     }
 }

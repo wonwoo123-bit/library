@@ -1,6 +1,8 @@
 package com.dw.library.mapper;
 
+import com.dw.library.dto.LoanGetDto;
 import com.dw.library.dto.LoanOverdueDto;
+import com.dw.library.dto.LoanPopDto;
 import com.dw.library.model.Loan;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,4 +21,6 @@ public interface LoanMapper {
     int returnLoan(@Param("id") long id);
 
     List<LoanOverdueDto> getOverdueLoans();
+
+    List<Loan> getPopularBook();
 }
