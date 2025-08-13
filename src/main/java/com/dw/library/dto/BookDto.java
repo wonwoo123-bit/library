@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class BookDto {
-    private long bookId;
     @PositiveOrZero(message = "isbn은 0 이상이어야 합니다")
     private String isbn;
     // ('general_works', 'philosophy' , 'religion', 'social_sciences', 'natural_sciences', 'applied_sciences', 'arts', 'language', 'literature', 'history'),

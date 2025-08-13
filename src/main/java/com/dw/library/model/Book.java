@@ -41,7 +41,6 @@ public class Book {
 
     public BookDto toDto(){
         return new BookDto(
-                this.bookId,
                 this.isbn,
                 this.title,
                 this.author,
