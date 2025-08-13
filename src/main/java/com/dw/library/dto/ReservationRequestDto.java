@@ -1,5 +1,7 @@
 package com.dw.library.dto;
 
+import com.dw.library.model.Book;
+import com.dw.library.model.Member;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,6 +10,6 @@ import lombok.*;
 @Getter
 @ToString
 public class ReservationRequestDto {
-    private Long memberId; // member_id FK 회원ID
-    private Long bookId; // book_id FK 도서ID
+    private String memberEmail; //회원ID
+    private long bookId;
 }

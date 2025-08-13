@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 
 public class Reservation {
     private Long reservationId; // reservation_id 예약ID
-    private Long memberId; // member_id FK 회원ID
-    private Long bookId; // book_id FK 도서ID
+    private Member member; // email
+    private Book book; // book_id FK 도서ID
     private LocalDateTime reservationDate; // reservation_date 예약일
     private LocalDateTime expiryDate; // expiry_date 예약만료일
     private LoanStatus status; // status 상태(ACTIVE/CANCELLED/FULFILLED)
