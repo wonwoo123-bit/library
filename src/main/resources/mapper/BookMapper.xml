@@ -51,7 +51,7 @@
     </update>
 
     <delete id="deleteBook">
-        DELETE FROM book WHERE bookId = #{bookId}
+        DELETE FROM book WHERE book_id = #{bookId}
     </delete>
 
 
