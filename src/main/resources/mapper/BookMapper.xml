@@ -60,7 +60,7 @@
         available_quantity = #{Book.availableQuantity},
         location = #{book.location}
         from book
-        where book_id = #{bookId}
+        where book_id = #{id}
     </select>
 
     <update id="updateBook">

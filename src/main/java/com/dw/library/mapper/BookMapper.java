@@ -17,7 +17,7 @@ public interface BookMapper {
                             @Param("keyword")String keyword,
                             @Param("category")String category);
 
-    Book getBookById(@Param("id") long id);
+    Book getBookById(@Param("book") long id);
 
     int updateBook(@Param("book")Book book);
 
