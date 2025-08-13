@@ -122,4 +122,18 @@
         where loan_id = #{loan} and status = due_date
     </select>
 
+    <select id="getOverdueLoans" resultType="LoanOverdueDto">
+        SELECT
+        l.loan_id AS loanId,
+        m.name AS memberName,
+        b.title AS bookTitle,
+        l.loan_date AS loanDate,
+        l.due_date AS dueDate,
+        l.status AS status
+        FROM loan l
+        INNER JOIN member m ON l.member_id = m.member_id
+        INNER JOIN book b ON l.book_id = b.book_id
+        WHERE l.status = 'overdue'
+    </select>
+
 </mapper>

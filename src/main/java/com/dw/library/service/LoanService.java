@@ -2,6 +2,7 @@ package com.dw.library.service;
 
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
+import com.dw.library.dto.LoanOverdueDto;
 import com.dw.library.dto.LoanReturnDto;
 import com.dw.library.enums.LoanStatus;
 import com.dw.library.exception.ResourceNotFoundException;
@@ -107,5 +108,9 @@ public class LoanService {
             return "존재하지 않는 대출건 입니다.";
         }
 
+    }
+
+    public List<LoanOverdueDto> getOverdueLoans() {
+        return loanMapper.getOverdueLoans();
     }
 }

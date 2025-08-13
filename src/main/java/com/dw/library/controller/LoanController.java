@@ -2,6 +2,7 @@ package com.dw.library.controller;
 
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
+import com.dw.library.dto.LoanOverdueDto;
 import com.dw.library.dto.LoanReturnDto;
 import com.dw.library.service.LoanService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +41,8 @@ public class LoanController {
 
     @GetMapping("/overdue")
 //    연체도서 조회
-    public ResponseEntity<LoanDto> overdue (){
-        return null;
+    public ResponseEntity<List<LoanOverdueDto>> overdue (){
+        List<LoanOverdueDto> overdueList = loanService.getOverdueLoans();
+        return new ResponseEntity<>(overdueList,HttpStatus.OK);
     }
 }
