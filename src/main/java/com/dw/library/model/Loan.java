@@ -20,17 +20,14 @@ public class Loan {
     private LocalDateTime dueDate; //반납예정일
     private LocalDateTime returnDate; //실제반납일
     private String status; // 상태(ACTIVE/RETURNED/OVERDUE)
-    private int fineAmount; // 연체료
+    private Integer fineAmount; // 연체료
     private LocalDateTime createdAt; // 수정일시
 
 
     public LoanDto toDto() {
         return new LoanDto(
                 this.member.getEmail(),
-                this.book.getBookId(),
-                this.loanDate,
-                this.dueDate,
-                this.status
+                this.book.getBookId()
         );
     }
     public LoanGetDto loanGetDto(){

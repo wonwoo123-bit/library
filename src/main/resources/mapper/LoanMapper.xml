@@ -39,24 +39,36 @@
         b.book_id,
         b.title,
         b.total_quantity,
-        b.available_quantity,
+        b.available_quantity
         from loan l inner join member m on l.member_id = m.member_id
         inner join book b on l.book_id = b.book_id
         where l.loan_id = #{id}
     </select>
 
-    <insert id="saveLoan" useGeneratedKeys="true" keyProperty="loanId">
-        insert into loan (member_id, book_id, loan_date, due_date, return_date, status, fine_amount, created_at)
-        values(
-        #{member.id},
-        #{book.bookId},
-        now(),
-        DATE_ADD(CURDATE(), INTERVAL 14 DAY),
-        #{returnDate},
-        #{status},
-        #{fineAmount},
-        now()
+    <insert id="saveLoan">
+        INSERT INTO loan (
+        member_id,
+        book_id,
+        loan_date,
+        due_date,
+        return_date,
+        status,
+        fine_amount,
+        created_at
         )
+        VALUES
+        <foreach collection="listLoan" item="loan" separator=",">
+            (
+            #{loan.member.id},
+            #{loan.book.bookId},
+            #{loan.loanDate},
+            #{loan.dueDate},
+            #{loan.returnDate},
+            #{loan.status},
+            #{loan.fineAmount},
+            #{loan.createdAt}
+            )
+        </foreach>
     </insert>
 
     <select id="getByOthers" resultMap="LoanDetailMap">
@@ -73,7 +85,7 @@
         b.book_id,
         b.title,
         b.total_quantity,
-        b.available_quantity,
+        b.available_quantity
         from loan l inner join member m on l.member_id = m.member_id
         inner join book b on l.book_id = b.book_id
         <where>
@@ -89,7 +101,8 @@
 
     <update id="returnLoan">
         update loan
-        set status = #{loan.status},
+        set
+        status = #{loan.status},
         created_at = now()
         where loan_id = #{id}
 

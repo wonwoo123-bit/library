@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface LoanMapper {
-    long saveLoan(@Param("loan")Loan loan);
+    void saveLoan(@Param("listLoan")List<Loan> listLoan);
 
     List<Loan> getByOthers(@Param("memberEmail") String memberEmail,
                            @Param("status") String status);

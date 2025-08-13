@@ -4,7 +4,7 @@ import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
 import com.dw.library.dto.LoanReturnDto;
 import com.dw.library.service.LoanService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +18,10 @@ public class LoanController {
     @Autowired
     LoanService loanService;
 
-    @PostMapping
+    @PostMapping("/save")
 //    도서대출
-    public ResponseEntity<Long> saveLoan(@RequestBody LoanDto loanDto){
-        return new ResponseEntity<>(loanService.saveLoan(loanDto), HttpStatus.CREATED);
+    public ResponseEntity<List<LoanDto>> saveLoan(@RequestBody List<LoanDto> loanDtoList){
+        return new ResponseEntity<>(loanService.saveLoan(loanDtoList), HttpStatus.CREATED);
     }
 
     @GetMapping("/search")
