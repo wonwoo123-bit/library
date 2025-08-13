@@ -29,9 +29,9 @@ public class BookController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(required = false) String keyword,
-            @RequestParam(required = false) String category
-    ){
-        return null;
+            @RequestParam(required = false) String category) {
+        return new ResponseEntity<>(bookService.getAllBooks(
+                page,size,keyword,category), HttpStatus.OK);
     }
 
     @GetMapping("/books/{bookId}")

@@ -7,6 +7,9 @@ import com.dw.library.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Service
 public class BookService {
@@ -25,6 +28,17 @@ public class BookService {
                 bookDto.getLocation()
         );
         return bookMapper.saveBook(newBook);
+    }
+//    모든 책 조회
+    public List<BookDto> getAllBooks(int page,
+                                     int size,
+                                     String keyword,
+                                     String category) {
+        int offset = page * size;
+        return bookMapper.getAllBooks(offset,size,keyword,category)
+                .stream()
+                .map(Book::toDto)
+                .toList();
     }
 
     // 도서 수정

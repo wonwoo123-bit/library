@@ -13,7 +13,9 @@ public interface BookMapper {
     int saveBook(@Param("Book")Book book);
 
     List<Book> getAllBooks (@Param("offset") int offset,
-                            @Param("limit") int limit);
+                            @Param("limit") int limit,
+                            @Param("keyword")String keyword,
+                            @Param("category")String category);
 
     Book getBookById(@Param("id") long id);
 

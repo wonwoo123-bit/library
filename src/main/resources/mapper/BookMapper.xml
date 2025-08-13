@@ -34,6 +34,18 @@
         now()
         )
     </insert>
+    
+    <select id="getAllBooks" resultMap="BookMap">
+        select * from book
+        <where>
+            <if test="keyword != null and keyword != ''">
+                and (title like concat('%', #{keyword}, '%')) or author = #{keyword}
+            </if>
+            <if test="category != null and category != ''">
+                and category = #{category}
+            </if>
+        </where>
+    </select>
 
 
 
