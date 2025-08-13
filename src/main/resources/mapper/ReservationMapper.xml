@@ -24,4 +24,31 @@
             <result property="availableQuantity" column="available_quantity"/>
         </association>
     </resultMap>
+    <insert id="saveReservation">
+        insert into reservations (
+        email,
+        book_id,
+        queue_position,
+        reservation_date,
+        expiry_date
+        ) values
+        <foreach collection="list" item="reservation" separator=",">
+            (
+            #{reservation.email} ,
+            #{reservation.bookId} ,
+            (select count(*)
+            from reservations
+            where book_id = #{reservation.bookId}) + 1 ,
+            now() ,
+            date_add(now(), interval 3 day)
+            )
+        </foreach>
+    </insert>
+    <update id="updateBooksStatus">
+        <foreach collection="list" item="reservation" separator=";">
+            update books
+            set status = 'RESERVED'
+            where book_id = #{reservation.bookId}
+        </foreach>
+    </update>
 </mapper>
