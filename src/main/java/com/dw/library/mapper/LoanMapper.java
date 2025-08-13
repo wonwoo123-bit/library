@@ -15,7 +15,5 @@ public interface LoanMapper {
 
     Loan getLoanById(@Param("id") long id);
 
-    Loan returnLoan(
-            @Param("id") long id,
-            @Param("loan") Loan loan);
+    int returnLoan(@Param("id") long id);
 }

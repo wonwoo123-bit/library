@@ -91,38 +91,12 @@ public class LoanService {
         return loanMapper.getByOthers(memberEmail, status).stream().map(Loan::loanGetDto).toList();
     }
 
-    public LoanReturnDto returnLoan(long id,LoanReturnDto loanReturnDto){
-
-        Loan loan = loanMapper.getLoanById(id);
-        if (loan == null){
-            throw new  ResourceNotFoundException(" 해당 대출 조회 불가능");
-        }
-        Member member = memberMapper.getMemberByEmail(loanReturnDto.getMemberEmail());
-        if (member == null){
-            throw new ResourceNotFoundException("해당 member 찾을 수 없음:" + loanReturnDto.getMemberEmail());
-        }
-        Book book = bookMapper.getBookById(loanReturnDto.getBookId());
-        if (book == null){
-            throw new ResourceNotFoundException("해당 책 찾을 수 없음");
+    public String returnLoan(long id){
+        if (loanMapper.returnLoan(id) > 0){
+            return "도서가 반납되었습니다.";
+        }else {
+            return "존재하지 않는 대출건 입니다.";
         }
 
-        LocalDateTime now = LocalDateTime.now();
-        loan.setReturnDate(now);
-
-        loan.setStatus(LoanStatus.fromDates(loan.getReturnDate().toLocalDate(), now.toLocalDate()));
-        loan.setCreatedAt(now);
-
-
-        book.setAvailableQuantity(book.getAvailableQuantity() + 1);
-        bookMapper.updateBook(book);
-
-
-        Loan updatedLoan = loanMapper.returnLoan(id, loan);
-        return new LoanReturnDto(
-                updatedLoan.getLoanId(),
-                updatedLoan.getMember().getEmail(),
-                updatedLoan.getBook().getBookId(),
-                updatedLoan.getStatus()
-        );
     }
 }

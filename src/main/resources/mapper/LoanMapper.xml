@@ -100,11 +100,12 @@
 
 
     <update id="returnLoan">
-        update loan
-        set
-        status = #{loan.status},
+        UPDATE loan
+        SET
+        return_date = now(),
+        status = 'returned',
         created_at = now()
-        where loan_id = #{id}
+        WHERE loan_id = #{id}
     </update>
 
     <select id="overdue" resultMap="LoanDetailMap">

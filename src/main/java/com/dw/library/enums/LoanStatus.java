@@ -8,9 +8,9 @@ import java.time.temporal.ChronoUnit;
 
 @Getter
 public enum LoanStatus {
-    ACTIVE("active"),
-    RETURNED("returned"),
-    OVERDUE("overdue");
+    active("active"),
+    returned("returned"),
+    overdue("overdue");
 
     private final String code;
 
@@ -24,15 +24,15 @@ public enum LoanStatus {
 
     public static LoanStatus fromDates(LocalDate borrowDate, LocalDate returnDate) {
         if (returnDate != null) {
-            return RETURNED;
+            return returned;
         }
 
         long daysBetween = ChronoUnit.DAYS.between(borrowDate, LocalDate.now());
 
         if (daysBetween > 14) { // 연체 기준: 14일
-            return OVERDUE;
+            return overdue;
         }
 
-        return ACTIVE;
+        return active;
     }
 }

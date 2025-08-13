@@ -16,8 +16,5 @@ import java.time.LocalDateTime;
 public class LoanReturnDto {
     private Long id;
     @NotBlank
-    private String memberEmail;
-    @NotBlank
     private long bookId;
-    private LoanStatus status; // (ACTIVE/RETURNED/OVERDUE)
 }
