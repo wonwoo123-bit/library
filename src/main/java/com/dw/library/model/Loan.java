@@ -2,6 +2,7 @@ package com.dw.library.model;
 
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
+import com.dw.library.dto.LoanOverdueDto;
 import com.dw.library.dto.LoanReturnDto;
 import lombok.*;
 
@@ -51,4 +52,14 @@ public class Loan {
         );
     }
 
+    public LoanOverdueDto loanOverdueDto(){
+        return new LoanOverdueDto(
+                this.loanId,
+                this.member.getName(),
+                this.book.getTitle(),
+                this.getLoanDate(),
+                this.getDueDate(),
+                this.status
+        );
+    }
 }
