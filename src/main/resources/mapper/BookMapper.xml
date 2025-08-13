@@ -55,11 +55,11 @@
         title = #{book.title},
         author = #{book.author},
         publisher = #{book.publisher},
-        publicationYear = #{book.publicationYear},
+        publication_year = #{book.publicationYear},
         category = #{book.category},
-        totalQuantity = #{book.totalQuantity},
+        total_quantity = #{book.totalQuantity},
         location = #{book.location}
-        WHERE bookId = #{book.bookId}
+        WHERE book_id = #{book.bookId}
     </update>
 
     <delete id="deleteBook">
