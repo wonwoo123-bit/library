@@ -68,7 +68,7 @@
 
 
     <select id="findByBookId" parameterType="long" resultMap="BookMap">
-        SELECT * from book where bookId = #{bookId}
+        SELECT * from book where book_id = #{bookId}
     </select>
 
 
