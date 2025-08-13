@@ -45,11 +45,10 @@ public class Loan {
 
     public LoanReturnDto loanReturnDto(){
         return new LoanReturnDto(
+                this.loanId,
                 this.member.getEmail(),
                 this.book.getBookId(),
-                LocalDateTime.now(),
-                this.status,
-                LocalDateTime.now()
+                this.status
         );
     }
 

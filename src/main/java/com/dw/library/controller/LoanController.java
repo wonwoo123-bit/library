@@ -34,8 +34,10 @@ public class LoanController {
 
     @PutMapping("/return")
 //    도서반납
-    public ResponseEntity<Integer> returnLoan(@RequestBody LoanReturnDto loanReturnDto){
-        return new ResponseEntity<>(loanService.returnLoan(loanReturnDto), HttpStatus.OK);
+    public ResponseEntity<LoanReturnDto> returnLoan(
+            @RequestParam long id,
+            @RequestBody LoanReturnDto loanReturnDto){
+        return new ResponseEntity<LoanReturnDto>(loanService.returnLoan(id,loanReturnDto), HttpStatus.OK);
     }
 
     @GetMapping("/overdue")

@@ -14,11 +14,10 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class LoanReturnDto {
+    private Long id;
     @NotBlank
     private String memberEmail;
     @NotBlank
     private long bookId;
-    private LocalDateTime returnDate; //실제반납일
     private LoanStatus status; // (ACTIVE/RETURNED/OVERDUE)
-    private LocalDateTime createdAt;
 }
