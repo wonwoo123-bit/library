@@ -25,6 +25,18 @@
         </association>
     </resultMap>
 
+    <resultMap id="LoanPopular" type="Loan">
+        <id property="loanId" column="loan_id"/>
+        <association property="member" javaType="Member">
+            <id property="id" column="member_id"/>
+        </association>
+        <association property="book" javaType="Book">
+            <id property="bookId" column="book_id"/>
+            <result property="title" column="title"/>
+            <result property="author" column="author"/>
+        </association>
+    </resultMap>
+
     <select id="getLoanById" resultMap="LoanDetailMap">
         select l.loan_id,
         l.loan_date,
@@ -134,6 +146,23 @@
         INNER JOIN member m ON l.member_id = m.member_id
         INNER JOIN book b ON l.book_id = b.book_id
         WHERE l.status = 'overdue'
+    </select>
+
+
+    <select id="getPopularBook" resultMap="LoanPopular">
+        SELECT
+        b.book_id,
+        b.title,
+        b.author,
+        COUNT(l.book_id) AS loan_count
+        FROM
+        loan l
+        INNER JOIN
+        book b ON l.book_id = b.book_id
+        GROUP BY
+        b.book_id, b.title, b.author
+        ORDER BY
+        loan_count DESC;
     </select>
 
 </mapper>

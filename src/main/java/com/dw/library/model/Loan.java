@@ -1,9 +1,6 @@
 package com.dw.library.model;
 
-import com.dw.library.dto.LoanDto;
-import com.dw.library.dto.LoanGetDto;
-import com.dw.library.dto.LoanOverdueDto;
-import com.dw.library.dto.LoanReturnDto;
+import com.dw.library.dto.*;
 import com.dw.library.enums.LoanStatus;
 import lombok.*;
 
@@ -60,4 +57,14 @@ public class Loan {
                 this.status
         );
     }
+
+    public LoanPopDto loanPopDto(){
+        return new LoanPopDto(
+                this.book.getBookId(),
+                this.book.getTitle(),
+                this.book.getAuthor()
+        );
+    }
+
+
 }
