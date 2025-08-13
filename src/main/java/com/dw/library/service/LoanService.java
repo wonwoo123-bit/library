@@ -3,6 +3,7 @@ package com.dw.library.service;
 import com.dw.library.dto.LoanDto;
 import com.dw.library.dto.LoanGetDto;
 import com.dw.library.dto.LoanReturnDto;
+import com.dw.library.enums.LoanStatus;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.mapper.LoanMapper;
@@ -62,6 +63,12 @@ public class LoanService {
             book.setAvailableQuantity(book.getAvailableQuantity() - 1);
             bookMapper.updateBook(book); // 데이터베이스 반영
 
+
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime dueDate = now.plusWeeks(2);
+            LocalDateTime returnDate = null;
+
+            LoanStatus status = LoanStatus.fromDates(now.toLocalDate(), null);
             Loan loan = new Loan(
                     null,
                     member,
@@ -69,7 +76,7 @@ public class LoanService {
                     LocalDateTime.now(),
                     LocalDateTime.now().plusWeeks(2),
                     null,
-                    "active", // 변수명이 active → LoanStatus.ACTIVE 등으로 가정
+                    status, // 변수명이 active → LoanStatus.ACTIVE 등으로 가정
                     null,
                     LocalDateTime.now()
             );
