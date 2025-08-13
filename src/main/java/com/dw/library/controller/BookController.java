@@ -27,7 +27,9 @@ public class BookController {
 //    모든 책 조회
     public ResponseEntity<List<BookDto>> getAllBooks (
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String category
     ){
         return null;
     }
