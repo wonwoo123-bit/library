@@ -1,5 +1,7 @@
 package com.dw.library.model;
 
+import com.dw.library.dto.ReservationRequestDto;
+import com.dw.library.dto.ReservationResponseDto;
 import com.dw.library.enums.LoanStatus;
 import lombok.*;
 
@@ -21,4 +23,20 @@ public class Reservation {
     private Integer queuePosition; // queue_position 대기순번
     private LocalDateTime createdAt; // created_at 예약신청일시
     private LocalDateTime updatedAt; // updated_at 수정일시
+
+    public ReservationRequestDto reservationRequestDto() {
+        return new ReservationRequestDto(
+                this.member.getEmail(),
+                this.book.getBookId()
+        );
+    }
+
+    public ReservationResponseDto reservationResponseDto() {
+        return new ReservationResponseDto(
+                this.reservationId,
+                this.queuePosition,
+                this.reservationDate,
+                this.expiryDate
+        );
+    }
 }
