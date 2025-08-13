@@ -93,6 +93,15 @@ public class LoanService {
 
     public String returnLoan(long id){
         if (loanMapper.returnLoan(id) > 0){
+            Loan loan = loanMapper.getLoanById(id);
+            Book book = bookMapper.findByBookId(loan.getBook().getBookId());
+            book.setAvailableQuantity(book.getAvailableQuantity()+1);
+            bookMapper.updateBook(book);
+            LocalDateTime now = LocalDateTime.now();
+            loan.setReturnDate(now);
+            loan.setStatus(LoanStatus.returned);
+            loan.setCreatedAt(now);
+
             return "도서가 반납되었습니다.";
         }else {
             return "존재하지 않는 대출건 입니다.";
