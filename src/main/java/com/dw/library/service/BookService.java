@@ -1,6 +1,7 @@
 package com.dw.library.service;
 
 import com.dw.library.dto.BookDto;
+import com.dw.library.dto.BooksAllDto;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.model.Book;
@@ -30,14 +31,14 @@ public class BookService {
         return bookMapper.saveBook(newBook);
     }
 //    모든 책 조회
-    public List<BookDto> getAllBooks(int page,
-                                     int size,
-                                     String keyword,
-                                     String category) {
+    public List<BooksAllDto> getAllBooks(int page,
+                                         int size,
+                                         String keyword,
+                                         String category) {
         int offset = page * size;
         return bookMapper.getAllBooks(offset,size,keyword,category)
                 .stream()
-                .map(Book::toDto)
+                .map(Book::booksAllDto)
                 .toList();
     }
 

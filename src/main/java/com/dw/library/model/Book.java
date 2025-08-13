@@ -1,6 +1,7 @@
 package com.dw.library.model;
 
 import com.dw.library.dto.BookDto;
+import com.dw.library.dto.BooksAllDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -49,6 +50,19 @@ public class Book {
                 this.category,
                 this.totalQuantity,
                 this.location
+        );
+    }
+    public BooksAllDto booksAllDto(){
+        return new BooksAllDto(
+                this.bookId,
+                this.isbn,
+                this.title,
+                this.author,
+                this.publisher,
+                this.category,
+                this.totalQuantity,
+                this.location,
+                this.availableQuantity
         );
     }
 }

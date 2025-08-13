@@ -1,6 +1,7 @@
 package com.dw.library.controller;
 
 import com.dw.library.dto.BookDto;
+import com.dw.library.dto.BooksAllDto;
 import com.dw.library.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class BookController {
 
     @GetMapping
 //    모든 책 조회
-    public ResponseEntity<List<BookDto>> getAllBooks (
+    public ResponseEntity<List<BooksAllDto>> getAllBooks (
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(required = false) String keyword,
