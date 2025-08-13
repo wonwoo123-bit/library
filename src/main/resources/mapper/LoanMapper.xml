@@ -105,7 +105,20 @@
         status = #{loan.status},
         created_at = now()
         where loan_id = #{id}
-
     </update>
+
+    <select id="overdue" resultMap="LoanDetailMap">
+        select
+        l.loan_id,
+        m.name,
+        b.title,
+        l.loan_date,
+        l.due_date,
+        l.status
+        from
+        loan l inner join member m on l.member_id = m.member_id
+        inner join book b on l.book_id = b.book_id
+        where loan_id = #{loan} and status = due_date
+    </select>
 
 </mapper>
