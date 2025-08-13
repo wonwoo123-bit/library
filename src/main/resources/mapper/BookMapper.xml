@@ -48,7 +48,18 @@
     </select>
 
     <select id="getBookById" resultMap="BookMap">
-        select * from book
+        select
+        book_id = #{book.bookId},
+        isbn = #{book.isbn},
+        title = #{book.title},
+        author = #{book.author},
+        publisher = #{book.publisher},
+        publication_year = #{book.publicationYear},
+        category = #{book.category},
+        total_quantity = #{book.totalQuantity},
+        available_quantity = #{Book.availableQuantity},
+        location = #{book.location}
+        from book
         where book_id = #{bookId}
     </select>
 
