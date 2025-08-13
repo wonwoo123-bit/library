@@ -1,13 +1,17 @@
 package com.dw.library.service;
 
+import com.dw.library.dto.BookByIdDto;
 import com.dw.library.dto.BookDto;
 import com.dw.library.dto.BooksAllDto;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -30,7 +34,7 @@ public class BookService {
         );
         return bookMapper.saveBook(newBook);
     }
-//    모든 책 조회
+//    모든 책 조회 (검색)
     public List<BooksAllDto> getAllBooks(int page,
                                          int size,
                                          String keyword,
@@ -40,6 +44,16 @@ public class BookService {
                 .stream()
                 .map(Book::booksAllDto)
                 .toList();
+    }
+
+    //    책 id로 조회
+    public BookByIdDto getBookById(long id){
+        Book book = bookMapper.getBookById(id);
+        if (book != null) {
+            return book.bookByIdDto();
+        } else {
+            throw new ResourceNotFoundException("해당 책이 없습니다. ID : " + id);
+        }
     }
 
     // 도서 수정

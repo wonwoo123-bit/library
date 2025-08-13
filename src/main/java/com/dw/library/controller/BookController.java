@@ -1,5 +1,6 @@
 package com.dw.library.controller;
 
+import com.dw.library.dto.BookByIdDto;
 import com.dw.library.dto.BookDto;
 import com.dw.library.dto.BooksAllDto;
 import com.dw.library.service.BookService;
@@ -37,8 +38,11 @@ public class BookController {
 
     @GetMapping("/books/{bookId}")
 //    책 id로 조회
-    public ResponseEntity<BookDto> getBookById (@PathVariable long id){
-        return null;
+    public ResponseEntity<BookByIdDto> getBookById(@PathVariable long id){
+        return new ResponseEntity<>(
+                bookService.getBookById(id),
+                HttpStatus.OK
+        );
     }
 
     // 도서 정보 수정

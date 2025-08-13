@@ -47,7 +47,10 @@
         </where>
     </select>
 
-
+    <select id="getBookById" resultMap="BookMap">
+        select * from book
+        where book_id = #{bookId}
+    </select>
 
     <update id="updateBook">
         UPDATE book
