@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class Book {
-    private long bookId;
+    private Long bookId;
     private String isbn;
     private String title;
     private String author;

@@ -53,7 +53,7 @@ public class MemberController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody MemberDto memberDto,
+    public ResponseEntity<String> login(@Valid @RequestBody MemberDto memberDto,
                                         HttpServletRequest request) {
         String email = memberDto.getEmail();
         String password = memberDto.getPassword();
