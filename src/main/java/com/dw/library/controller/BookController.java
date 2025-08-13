@@ -38,9 +38,9 @@ public class BookController {
 
     @GetMapping("/books/{bookId}")
 //    책 id로 조회
-    public ResponseEntity<BookByIdDto> getBookById(@RequestParam long id){
+    public ResponseEntity<BookByIdDto> getBookById(@PathVariable long bookId){
         return new ResponseEntity<>(
-                bookService.getBookById(id),
+                bookService.getBookById(bookId),
                 HttpStatus.OK
         );
     }

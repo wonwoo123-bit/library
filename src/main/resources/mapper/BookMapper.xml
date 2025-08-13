@@ -49,18 +49,18 @@
 
     <select id="getBookById" resultMap="BookMap">
         select
-        book_id = #{book.bookId},
-        isbn = #{book.isbn},
-        title = #{book.title},
-        author = #{book.author},
-        publisher = #{book.publisher},
-        publication_year = #{book.publicationYear},
-        category = #{book.category},
-        total_quantity = #{book.totalQuantity},
-        available_quantity = #{Book.availableQuantity},
-        location = #{book.location}
+        book_id,
+        isbn,
+        title,
+        author,
+        publisher,
+        publication_year,
+        category,
+        total_quantity,
+        available_quantity,
+        location
         from book
-        where book_id = #{id}
+        where book_id = #{book}
     </select>
 
     <update id="updateBook">
