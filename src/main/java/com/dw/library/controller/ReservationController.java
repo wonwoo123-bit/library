@@ -23,7 +23,7 @@ public class ReservationController {
     // 도서 예약
     public ResponseEntity<ReservationRequestDto> saveReservation (
             @Valid @RequestBody ReservationRequestDto requestDto){
-        return new ResponseEntity<>(reservationService.saveReservetion(requestDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(reservationService.saveReservation(requestDto), HttpStatus.CREATED);
     }
 
 

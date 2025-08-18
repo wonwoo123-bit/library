@@ -15,6 +15,6 @@ public interface ReservationMapper {
 
     Reservation findByReservationId(@Param("reservationId") Long reservationId);
 
-    int deleteReservation(@Param("reservationId") Long reservationId);
+    long deleteReservation(@Param("reservationId") Long reservationId);
 
 }

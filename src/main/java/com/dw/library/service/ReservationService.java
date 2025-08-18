@@ -3,6 +3,7 @@ package com.dw.library.service;
 
 import com.dw.library.dto.ReservationRequestDto;
 import com.dw.library.dto.ReservationResponseDto;
+import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.mapper.MemberMapper;
 import com.dw.library.mapper.ReservationMapper;
@@ -42,20 +43,24 @@ public class ReservationService {
 
 
     // 예약 목록 조회
-    public ReservationResponseDto getAllReservation(String email) {
-        Reservation reservation = ReservationMapper.getAllReservation(email);
-        if (reservation != null) {
-            return reservation.reservationResponseDto();
-        } else {
-            throw new RuntimeException("예약이 존재하지 않습니다");
+    public List<ReservationResponseDto> getAllReservation(String email, Long bookId) {
+        memberMapper.getMemberByEmail(email);
+        if (email == null){
+            throw new ResourceNotFoundException("해당 유저가 존재하지 않습니다.");
         }
+        bookMapper.getBookById(bookId);
+        if (bookId == null){
+            throw new ResourceNotFoundException("해당 책 정보가 없습니다.");
+        }
+
+        return reservationMapper.getAllReservation(email, bookId).stream().map(Reservation::reservationResponseDto).toList();
     }
 
 
     // 예약 도서 취소
     public String deleteReservation (Long reservationId){
-        Reservation reservation = ReservationMapper.findByReservationId(reservationId);
-        int deletedRows = ReservationMapper.deleteReservation(ReservationId);
+        Reservation reservation = reservationMapper.findByReservationId(reservationId);
+        long deletedRows = reservationMapper.deleteReservation(reservation.getReservationId(reservationId));
         if (deletedRows > 0) {
             return "예약이 취소되었습니다";
         }
