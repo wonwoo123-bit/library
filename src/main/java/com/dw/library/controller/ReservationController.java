@@ -21,7 +21,7 @@ public class ReservationController {
 
     @PostMapping("/reservations")
     // 도서 예약
-    public ResponseEntity<ReservationRequestDto> saveReservation (
+    public ResponseEntity<Long> saveReservation (
             @Valid @RequestBody ReservationRequestDto requestDto){
         return new ResponseEntity<>(reservationService.saveReservation(requestDto), HttpStatus.CREATED);
     }
