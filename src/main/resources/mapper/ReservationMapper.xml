@@ -51,4 +51,8 @@
             where book_id = #{reservation.bookId}
         </foreach>
     </update>
+
+    <select id="findByReservationId" parameterType="long" resultMap="ReservationDetail">
+        select * from reservation where reservation_id = #{reservationId}
+    </select>
 </mapper>
