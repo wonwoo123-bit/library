@@ -3,6 +3,7 @@ package com.dw.library.service;
 
 import com.dw.library.dto.ReservationRequestDto;
 import com.dw.library.dto.ReservationResponseDto;
+import com.dw.library.exception.InvalidRequestException;
 import com.dw.library.exception.ResourceNotFoundException;
 import com.dw.library.mapper.BookMapper;
 import com.dw.library.mapper.MemberMapper;
@@ -60,9 +61,14 @@ public class ReservationService {
     // 예약 도서 취소
     public String deleteReservation (Long reservationId){
         Reservation reservation = reservationMapper.findByReservationId(reservationId);
-        long deletedRows = reservationMapper.deleteReservation(reservation.getReservationId(reservationId));
+        if (reservation == null){
+            throw new InvalidRequestException("해당 예약건을 찾을 수 없음");
+        }
+        long deletedRows = reservationMapper.deleteReservation(reservationId);
         if (deletedRows > 0) {
             return "예약이 취소되었습니다";
+        }else {
+            return "해당 예약 취소가 실패되었습니다.";
         }
     }
 }
