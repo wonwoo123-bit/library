@@ -65,7 +65,6 @@
             <if test="book != null and book != ''">
                 and book = #{bookId}
             </if>
-
         </where>
     </select>
 </mapper>

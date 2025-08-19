@@ -10,8 +10,8 @@ import java.util.List;
 public interface ReservationMapper {
     long saveReservation(@Param("reservation")Reservation reservationId);
 
-    List<Reservation> getAllReservation (@Param("memberEmail") String memberEmail,
-                                         @Param("bookId") Long bookId);
+    List<Reservation> getAllReservation (@Param("member") String memberEmail,
+                                         @Param("book") Long bookId);
 
     Reservation findByReservationId(@Param("reservationId") Long reservationId);
 
