@@ -55,4 +55,17 @@
     <select id="findByReservationId" parameterType="long" resultMap="ReservationDetail">
         select * from reservation where reservation_id = #{reservationId}
     </select>
+
+    <select id="getAllReservation" resultMap="ReservationDetail">
+        select * from reservation
+        <where>
+            <if test="member != null and member != ''">
+                and member = #{memberEmail}
+            </if>
+            <if test="book != null and book != ''">
+                and book = #{bookId}
+            </if>
+
+        </where>
+    </select>
 </mapper>

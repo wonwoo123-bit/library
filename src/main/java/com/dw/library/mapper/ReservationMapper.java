@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface ReservationMapper {
-    int saveReservation(@Param("reservation")Reservation reservationId);
+    long saveReservation(@Param("reservation")Reservation reservationId);
 
     List<Reservation> getAllReservation (@Param("memberEmail") String memberEmail,
                                          @Param("bookId") Long bookId);
